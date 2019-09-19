@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import CurrentNewUser from '../CurrentNewUser/CurrentNewUser';
+import ListAllCreatures from '../ListAllCreatures/ListAllCreatures';
 
 class Form extends Component {
   // constructor(props) {
@@ -45,11 +46,6 @@ class Form extends Component {
   }
 
   render() {
-    const listItemCreatures = this.state.creatureList.map((creature) =>
-      (<li key={creature.name}>
-        The {creature.name} is from {creature.origin}.
-      </li>)
-    );
 
     return (
       <div>
@@ -62,14 +58,12 @@ class Form extends Component {
         <input onChange={(event) => this.handleChangeFor(event, 'zipCode')} input-type="numeric" type="text" /></label><br />
           <button onClick={this.handleClick}>Clickity Submitty</button><br />
         </form>
-        <CurrentNewUser displayUser={this.state.displayUser}/>
-        <ul>
-          {listItemCreatures}
-        </ul>
-        <p>Splatting to the DOM looks like this:</p>
+        <CurrentNewUser displayUser={this.state.displayUser} />
+        <ListAllCreatures creatureList={this.state.creatureList} />
+        {/* <p>Splatting to the DOM looks like this:</p>
         <pre>
           {JSON.stringify(this.state, null, 2)}
-        </pre>
+        </pre> */}
 
       </div>
     );
