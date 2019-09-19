@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import NewUserForm from '../NewUserForm/NewUserForm';
 import CurrentNewUser from '../CurrentNewUser/CurrentNewUser';
 import ListAllCreatures from '../ListAllCreatures/ListAllCreatures';
 
@@ -49,17 +50,13 @@ class Form extends Component {
 
     return (
       <div>
-        <form>
-          <label>Name:
-        <input onChange={(event) => this.handleChangeFor(event, 'name')} type="text" /></label><br />
-          <label>City:
-        <input onChange={(event) => this.handleChangeFor(event, 'city')} type="text" /></label><br />
-          <label>Zip Code:
-        <input onChange={(event) => this.handleChangeFor(event, 'zipCode')} input-type="numeric" type="text" /></label><br />
-          <button onClick={this.handleClick}>Clickity Submitty</button><br />
-        </form>
+        <NewUserForm
+          handleChangeFor={this.handleChangeFor}
+          handleClick={this.handleClick}
+        />
         <CurrentNewUser displayUser={this.state.displayUser} />
         <ListAllCreatures creatureList={this.state.creatureList} />
+
         <p>Splatting to the DOM looks like this:</p>
         <pre>
           {JSON.stringify(this.state, null, 2)}
