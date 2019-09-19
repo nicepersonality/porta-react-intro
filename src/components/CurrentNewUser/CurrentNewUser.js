@@ -5,7 +5,7 @@ class CurrentNewUser extends Component {
   render() {
     return (
         <div id="CurrentNewUser">
-          Hello from CurrentNewUser.
+        <p>{this.props.displayUser.name} is from {this.props.displayUser.city}, {this.props.displayUser.zipCode}.</p>
         </div>
     );
   }

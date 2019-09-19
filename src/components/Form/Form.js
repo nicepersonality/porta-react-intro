@@ -62,8 +62,7 @@ class Form extends Component {
         <input onChange={(event) => this.handleChangeFor(event, 'zipCode')} input-type="numeric" type="text" /></label><br />
           <button onClick={this.handleClick}>Clickity Submitty</button><br />
         </form>
-        <CurrentNewUser />
-        <p>{this.state.displayUser.name} is from {this.state.displayUser.city}, {this.state.displayUser.zipCode}.</p>
+        <CurrentNewUser displayUser={this.state.displayUser}/>
         <ul>
           {listItemCreatures}
         </ul>
