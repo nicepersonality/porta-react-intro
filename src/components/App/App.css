@@ -1,7 +1,10 @@
 .App {
   text-align: center;
 }
-
+.App pre,
+.App ul {
+  text-align: left;
+}
 .App-logo {
   animation: App-logo-spin infinite 10s ease-in-out;
   height: 40vmin;

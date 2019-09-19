@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CurrentNewUser from '../CurrentNewUser/CurrentNewUser';
 
 class Form extends Component {
   // constructor(props) {
@@ -15,62 +16,62 @@ class Form extends Component {
       name: 'display name',
       city: 'display city',
       zipCode: '55555'
-    }
+    },
+    creatureList: [
+      { name: 'Unicorn', origin: 'Europe' },
+      { name: 'Sphinx', origin: 'Persia' },
+      { name: 'Dryad', origin: 'Greece' },
+      { name: 'Kappa', origin: 'Japan' },
+      { name: 'Jackalope', origin: 'America' }
+    ],
   }
 
-  changeName = ( (event) => {
+  handleChangeFor = (event, propertyName) => {
     this.setState({
       user: {
         ...this.state.user,
-        name: event.target.value
+        [propertyName]: event.target.value
       }
     })
-    // console.log('changeName');
-    // console.log('this.state.user', this.state.user);    
-  });
+  }
 
-  changeZip = ( (event) => {
-    this.setState({
-      user: {
-        ...this.state.user,
-        zipCode: event.target.value
-      }
-    })
-  });
-
-  changeCity = ( (event) => {
-    this.setState({
-      user: {
-        ...this.state.user,
-        city: event.target.value
-      }
-    })
-    // console.log('changeCity');
-    // console.log('this.state.user', this.state.user);
-  });
-
-  handleClick = ( (event) => {
+  handleClick = (event) => {
     console.log('handleClick');
     console.log('this.state.user', this.state.user);
     this.setState({
-      displayUser: {...this.state.user}
+      displayUser: { ...this.state.user }
     })
     event.preventDefault();
-  });
+  }
 
   render() {
+    const listItemCreatures = this.state.creatureList.map((creature) =>
+      (<li key={creature.name}>
+        The {creature.name} is from {creature.origin}.
+      </li>)
+    );
+
     return (
       <div>
         <form>
           <label>Name:
-        <input onChange={this.changeName} type="text" /></label><br />
-        <label>City:
-        <input onChange={this.changeCity} type="text" /></label><br />
-        <label>Zip Code:
-        <input onChange={this.changeZip} input-type="numeric" type="text" /></label><br />
+        <input onChange={(event) => this.handleChangeFor(event, 'name')} type="text" /></label><br />
+          <label>City:
+        <input onChange={(event) => this.handleChangeFor(event, 'city')} type="text" /></label><br />
+          <label>Zip Code:
+        <input onChange={(event) => this.handleChangeFor(event, 'zipCode')} input-type="numeric" type="text" /></label><br />
           <button onClick={this.handleClick}>Clickity Submitty</button><br />
         </form>
-        <p>{this.state.displayUser.name} is from {this.state.displayUser.city}.</p>
+        <CurrentNewUser />
+        <p>{this.state.displayUser.name} is from {this.state.displayUser.city}, {this.state.displayUser.zipCode}.</p>
+        <ul>
+          {listItemCreatures}
+        </ul>
+        <p>Splatting to the DOM looks like this:</p>
+        <pre>
+          {JSON.stringify(this.state, null, 2)}
+        </pre>
+
       </div>
     );
   }
