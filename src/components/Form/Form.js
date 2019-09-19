@@ -60,10 +60,10 @@ class Form extends Component {
         </form>
         <CurrentNewUser displayUser={this.state.displayUser} />
         <ListAllCreatures creatureList={this.state.creatureList} />
-        {/* <p>Splatting to the DOM looks like this:</p>
+        <p>Splatting to the DOM looks like this:</p>
         <pre>
           {JSON.stringify(this.state, null, 2)}
-        </pre> */}
+        </pre>
 
       </div>
     );

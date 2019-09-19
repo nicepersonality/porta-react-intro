@@ -1,9 +1,14 @@
 .App {
   text-align: center;
 }
-.App pre,
 .App ul {
   text-align: left;
+}
+.App pre {
+  text-align: left;
+  font-size: 0.75rem;
+  column-count: 2;
+  column-gap: 1rem;
 }
 .App-logo {
   animation: App-logo-spin infinite 10s ease-in-out;
